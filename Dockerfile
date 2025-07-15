@@ -10,4 +10,4 @@ EXPOSE 3000
 COPY ./publish ./
 
 # Lệnh chạy ứng dụng
-ENTRYPOINT ["dotnet", "p150725.dll"]
+ENTRYPOINT ["dotnet", "P150725.dll"]
