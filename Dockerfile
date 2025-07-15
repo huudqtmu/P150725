@@ -1,20 +1,13 @@
-﻿#-- tài image => kiểu như cài netcore lên máy
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+﻿
+ # Base image chỉ để chạy (runtime)
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
 #thiet lap cong trong noi bo docker
 EXPOSE 3000
 
-# Stage 1: build
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
-COPY ["P150725.csproj","src/"]
-RUN dotnet restore "src/P150725.csproj"
-COPY . .
-RUN dotnet publish -c Release -o /app/publish
+# Copy bản đã publish vào image
+COPY ./publish ./
 
-# Stage 2: runtime
-FROM base AS final
-WORKDIR /app
-COPY --from=build /app/publish .
-ENTRYPOINT ["dotnet", "P150725.dll"]
+# Lệnh chạy ứng dụng
+ENTRYPOINT ["dotnet", "p150725.dll"]
