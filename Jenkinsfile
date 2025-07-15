@@ -37,7 +37,7 @@ stage ('build') {
 					'''
                 }
             }
-
+			 
 		// dua vao docker image
 		stage('docker run') {
             steps {
