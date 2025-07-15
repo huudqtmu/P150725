@@ -42,7 +42,7 @@ stage ('build') {
 	 
 			stage('docker run') {
             steps {
-	              bat 'docker run -d --name p150725run -p 95:3000 p150725:latest'
+	              bat 'docker run -d --name p150725run -p 88:3000 p150725:latest'
                 }
             }
 
